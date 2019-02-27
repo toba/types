@@ -5,7 +5,7 @@ declare module 'html-webpack-plugin' {
 
    // Custom typings until this PR is merged:
    // https://github.com/jantimon/html-webpack-plugin/pull/1149
-   export default class HtmlWebpackPlugin extends Plugin {
+   class HtmlWebpackPlugin extends Plugin {
       /**
        * The major version number of this plugin
        */
@@ -276,4 +276,6 @@ declare module 'html-webpack-plugin' {
          }>;
       }
    }
+
+   export default HtmlWebpackPlugin;
 }
