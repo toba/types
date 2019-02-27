@@ -1,0 +1,16 @@
+{
+   "version": "2.0.0",
+   "tasks": [
+      {
+         "label": "Publish",
+         "command": "npm",
+         "args": ["publish"],
+         "presentation": {
+            "clear": true
+         },
+         "type": "shell",
+         "group": "none",
+         "problemMatcher": []
+      }
+   ]
+}
