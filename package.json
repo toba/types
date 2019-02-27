@@ -26,7 +26,11 @@
       "@toba/develop": "^6.0.3",
       "@types/babel__core": "^7.1.0",
       "@types/babel__template": "^7.0.2",
+      "@types/html-minifier": "^3.5.3",
       "@types/react": "^16.8.5",
-      "react": "^16.8.3"
+      "@types/webpack": "^4.4.25",
+      "html-minifier": "^3.5.21",
+      "react": "^16.8.3",
+      "webpack": "^4.29.5"
    }
 }

@@ -1,3 +1,7 @@
 {
-   "extends": "@toba/develop/tsconfig.cjs"
+   "extends": "@toba/develop/tsconfig.cjs",
+   "compilerOptions": {
+      "skipLibCheck": false
+   },
+   "include": ["**/*.ts"]
 }
