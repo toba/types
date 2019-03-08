@@ -392,7 +392,7 @@ declare module 'svgo' {
        * @see https://github.com/svg/svgo/blob/master/plugins/addClassesToSVGElement.js
        */
       interface Plugin<T extends Item | SyntaxTree, U> {
-         type: string;
+         type: 'perItem' | 'perItemReverse' | 'full';
          active: boolean;
          description: string;
          params?: U;
