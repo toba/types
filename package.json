@@ -1,7 +1,7 @@
 {
    "name": "@toba/types",
    "description": "Toba TypeScript Type Definitions",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "private": false,
    "publishConfig": {
       "access": "public"

@@ -285,9 +285,9 @@ declare module 'svgo' {
    namespace SVGO {
       interface BaseItem {
          /** Whether named item is an element. */
-         isElem(name: string | string[]): boolean;
+         isElem(name: string | string[]): this is Element;
          /** Whether current element is empty. */
-         isEmpty(): boolean;
+         isEmpty(): this is Instruction | Text | Comment | CData | DocType;
          /** Rename the current element. */
          renameElem(newName: string): Element;
          /** Deep clone the current element. */
