@@ -303,7 +303,7 @@ declare module 'svgo' {
          /** Remove attribute with name or name and value if value is given. */
          removeAttr(name: string, value?: string): boolean;
          /** Add an attribute to the current element. */
-         addAttr(name: string): Attribute;
+         addAttr(attr: SubType<Attribute, string>): boolean;
          /**
           * Call method for each attribute and return whether any attributes exist.
           */
