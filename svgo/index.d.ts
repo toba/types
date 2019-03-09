@@ -300,9 +300,9 @@ declare module 'svgo' {
           * is `true` if any attribute exist, otherwise it will only be `true` if the
           * named attribute exists.
           */
-         hasAttr(name?: string, value?: string): this is Element;
+         hasAttr(name?: string, value?: string): boolean;
 
-         hasAttrLocal(localName: string, value?: string): this is Element;
+         hasAttrLocal(localName: string, value?: string): boolean;
 
          /** Retrieve attribute with name or name and value if value is given. */
          attr(name: string, value?: string): Attribute;
