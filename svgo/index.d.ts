@@ -323,7 +323,7 @@ declare module 'svgo' {
           */
          closestElem(name: String): BaseItem;
 
-         parentNode: BaseItem;
+         parentNode: Element;
       }
 
       interface Instruction extends BaseItem {
