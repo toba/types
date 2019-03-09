@@ -283,6 +283,9 @@ declare module 'svgo' {
    }
 
    namespace SVGO {
+      /**
+       * @see https://github.com/svg/svgo/blob/master/lib/svgo/jsAPI.js
+       */
       interface BaseItem {
          /** Whether named item is an element. */
          isElem(name: string | string[]): this is Element;
@@ -297,17 +300,30 @@ declare module 'svgo' {
           * is `true` if any attribute exist, otherwise it will only be `true` if the
           * named attribute exists.
           */
-         hasAttr(name?: string, value?: string): boolean;
+         hasAttr(name?: string, value?: string): this is Element;
+
+         hasAttrLocal(localName: string, value?: string): this is Element;
+
          /** Retrieve attribute with name or name and value if value is given. */
          attr(name: string, value?: string): Attribute;
+
          /** Remove attribute with name or name and value if value is given. */
          removeAttr(name: string, value?: string): boolean;
+
          /** Add an attribute to the current element. */
          addAttr(attr: SubType<Attribute, string>): boolean;
+
          /**
           * Call method for each attribute and return whether any attributes exist.
           */
          eachAttr(fn: (a: Attribute) => void): boolean;
+
+         /**
+          * Find the closest ancestor of the current element.
+          */
+         closestElem(name: String): BaseItem;
+
+         parentNode: BaseItem;
       }
 
       interface Instruction extends BaseItem {
@@ -337,7 +353,54 @@ declare module 'svgo' {
 
       interface Attribute extends Namespaced {
          name: string;
-         value: string;
+         value: string | undefined;
+      }
+
+      /**
+       * @see https://github.com/svg/svgo/blob/master/lib/svgo/css-class-list.js
+       */
+      interface ClassList {
+         classNames: Set<string>;
+         classAttr: any;
+         /**
+          * Add methods to the standard `attrs['class']` value.
+          */
+         addClassHandler(): void;
+
+         /**
+          * Add `value` property to `attrs['class']`.
+          */
+         addClassValueHandler(): void;
+
+         getClassAttr(): string;
+
+         setClassAttr(attr: Attribute): void;
+
+         /**
+          * Retrieve class names joined by space.
+          */
+         getClassValue(): string;
+
+         /**
+          *
+          * @param name If no value is given then class names are cleared.
+          */
+         setClassValue(name?: string): void;
+
+         add(...name: string[]): void;
+         remove(...name: string[]): void;
+         _removeSingle(name: string): void;
+         item(index: number): string;
+
+         /**
+          * Remove class if it exists or add it if it does not.
+          */
+         toggle(name: string, force: boolean): void;
+
+         /**
+          * Whether class name is already assigned.
+          */
+         contains(name: string): boolean;
       }
 
       type Item = Instruction | Comment | DocType | Element | CData | Text;
@@ -345,6 +408,7 @@ declare module 'svgo' {
       interface Element extends Namespaced {
          elem: string;
          attrs: { [key: string]: Attribute };
+         class: ClassList;
          content: Item[];
       }
 
